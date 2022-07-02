@@ -480,34 +480,29 @@ p_{X}(x) &= \frac{1}{\sqrt{2\pi}}\exp\brak{-\frac{x^2}{2}}, -\infty < x < \infty
  Consider the following expression,
    \begin{align}
 	   E\sbrak{x^{2}} &= \int_{-\infty}^{\infty}x^{2}p_{X}\sbrak{x}dx\\
-	                  &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x^{2}\exp\brak{-\frac{x^2}{2}}dx
-
+	                  &=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x^{2}e^{\brak{-\frac{x^2}{2}}}dx
    \end{align}
-
 To solve the above integral, we will use integration by parts, i.e,\\
   \begin{align}
-	  \int uvdx &= u\int vdx -\int\brak{ u'brak{\int v}}dx  
-  \end{align}
-  \begin{align}
-	  E\sbrak{x^{2}} &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}x\brak{x\exp\brak{-\frac{x^2}{2}}}dx
-			 &= \frac{1}{\sqrt{2\pi}}\brak{x\int x\exp\brak{-\frac{x^2}{2}}dx -  \int\frac{d\brak{x}}{x}\int\exp\brak{-\frac{x^2}{2}}dx}
+	  \int uvdx &= u\int vdx -\int\brak{ u'\brak{\int v}}dx  \\
+	  E\sbrak{x^{2}} &= \frac{1}{\sqrt{2\pi}}\brak{\int_{-\infty}^{\infty}x\brak{xe^{-\frac{x^2}{2}}}dx}\\
+			         &= \frac{1}{\sqrt{2\pi}}\brak{x\int x e^{-\frac{x^2}{2}}dx -  \int\brak{\int e^{-\frac{x^2}{2}}dx}}
   \end{align}
 For the integral $\int x\exp\brak{-\frac{x^2}{2}}dx$ let us take,
   \begin{align}
 	   t &= \frac{x^2}{2}\\
 	  dt &= xdx\\
-	  \int\exp\brak{-\frac{x^2}{2}}dx &= \int\exp\brak{-t}dt
-					  &=  -\exp\brak{-t} + c
-				\implies  &= -\exp\brak{-\brak{\frac{x^{2}}{2}}} + c \label{eq:2-6}
+	  \int x\exp\brak{-\frac{x^2}{2}}dx &= \int\exp\brak{-t}dt\\
+					                &=  -\exp\brak{-t} + c \\
+				          \implies  &= -\exp\brak{-\brak{\frac{x^{2}}{2}}} + c \label{eq:2-6}
   \end{align}
  Using \eqref{eq:2-6},we can write
   \begin{align}
-	  E\sbrak{x^{2}} &= \frac{1}{\sqrt{2\pi}}\brak{ -x\exp\brak{-\frac{x^{2}}{2}} + \int\exp\brak{\frac{-x^{2}}{2}}dx}
+	  E\sbrak{x^{2}} &= \frac{1}{\sqrt{2\pi}}\brak{ -xe^{\brak{-\frac{x^{2}}{2}}} + \int e^{\brak{\frac{-x^{2}}{2}}}dx}
   \end{align}
-
   And we know that,
   \begin{align}
-	  \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}\exp\brak{\frac{-x^{2}}{2}} &= 1 \label{eq:2-8}
+	  \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{\brak{\frac{-x^{2}}{2}}} &= 1 \label{eq:2-8}
   \end{align}
  Now putting limits and using \eqref{eq:2-3},\eqref{eq:2-8},
   \begin{align}
@@ -515,10 +510,9 @@ For the integral $\int x\exp\brak{-\frac{x^2}{2}}dx$ let us take,
   \end{align}	  
 Using \eqref{eq:1-8} we can write,
    \begin{align}
-    Var\sbrak{x} &= 1 - 0
-	         &= 1
-   \end{align}   
-                        
+    Var\sbrak{x} &= 1 - 0\\
+	               &= 1
+   \end{align}                           
 %
 \end{enumerate}
 \section{From Uniform to Other}
@@ -533,7 +527,6 @@ V = -2\ln\brak{1-U}
 %
 and plot its CDF.
 \solution Download the C code from the link below to generate samples of V from uni.dat file
-
 \begin{lstlisting}
 wget  https://github.com/Charanyash/Random-Numbers-/blob/main/codes/V.c
 \end{lstlsiting}
@@ -550,7 +543,6 @@ Then run the following command
 \begin{lstlisting}
 python3 rayleigh_cdf_plot.py
 \end{lstlisting}
-
 \begin{figure}
 \centering
 \includegraphics[width=\columnwidth]{figs/V_cdf.png}
@@ -579,7 +571,7 @@ python3 rayleigh_cdf_plot.py
  \begin{equation*}
          F_{x}\brak{x} = \begin{cases}
                             0  &, x < 0 \\
-                            1 -\exp\brak{\frac{-x}{2}}  &, x\gef 0 \\
+                            1 - e^{frac{-x}{2}}  &, x\geq 0 
                          \end{cases}
 \end{equation*}
 
@@ -591,4 +583,3 @@ python3 rayleigh_cdf_plot.py
 
 
 \end{document}
-
