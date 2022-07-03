@@ -10,7 +10,12 @@ double **matmul(double **a, double **b, int m, int n, int p);
 double **transpose(double **a, int m, int n);
 void uniform(char *str, int len);
 void gaussian(char *str, int len);
+void triangular(char *str, int len);
+void bernoulie(char *str, int len);
+void chi_square(char *str, char *str1, char *str2, int len);
+void Rayleigh(char *str, char *str1, char *str2, int len);
 double mean(char *str);
+double variance(char *str);
 // End function declaration
 
 // Defining the function for matrix creation
@@ -297,3 +302,52 @@ void bernoulie(char *str, int len)
     }
     fclose(fp);
 }
+
+//Defining function for Generating chi square random numbers for k = 2.
+void chi_square(char *str, char *str1, char *str2, int len)
+{
+    FILE *fp1;
+    FILE *fp2;
+    FILE *fp;
+    double x1, x2, v;
+    fp1 = fopen(str1, "r");
+    fp2 = fopen(str2, "r");
+    fp = fopen(str, "w");
+    int i;
+    for (i = 0; i < len; i++)
+    {
+        fscanf(fp1, "%lf", &x1);
+        fscanf(fp2, "%lf", &x2);
+        v = x1 * x1 + x2 * x2;
+        fprintf(fp, "%lf\n", v);
+    }
+    fclose(fp);
+    fclose(fp1);
+    fclose(fp2);
+}
+//End of the function
+
+// Defining the function to generate the rayliegh distribution random numbers.
+void Rayleigh(char *str, char *str1, char *str2, int len)
+{
+    FILE *fp1;
+    FILE *fp2;
+    FILE *fp;
+    double x1, x2, v;
+    fp1 = fopen(str1, "r");
+    fp2 = fopen(str2, "r");
+    fp = fopen(str, "w");
+    int i;
+    for (i = 0; i < len; i++)
+    {
+        fscanf(fp1, "%lf", &x1);
+        fscanf(fp2, "%lf", &x2);
+        v = x1 * x1 + x2 * x2;
+        fprintf(fp, "%lf\n", sqrt(v));
+    }
+    fclose(fp);
+    fclose(fp1);
+    fclose(fp2);
+}
+// End of function
+
