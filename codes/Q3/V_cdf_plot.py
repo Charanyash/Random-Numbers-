@@ -9,13 +9,12 @@ import shlex
 
 import scipy
 #end if
-def Q(x):
-    if x<0.0:
-        return 1.0
-    else :
-        return math.exp(-x/2.0)
+
 def cdf(x):
-    return 1.0 - Q(x)
+    if x<0.0:
+  	return 0
+    else :
+        return 1 - math.exp(-x/2.0)
 
 x = np.linspace(-10,10,50)#points on the x axis
 simlen = int(1e6) #number of samples
